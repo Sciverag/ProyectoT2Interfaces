@@ -1,0 +1,135 @@
+$textoPrincipal: goldenrod;
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+@mixin titulos {
+  color: $textoPrincipal;
+  font-family: "Kaushan Script", Arial, Helvetica, sans-serif;
+  font-weight: bold;
+}
+
+@mixin seccionImportante {
+  border-image: url(../img/borde.png) 40%;
+  border-image-width: 0 0 30% 0;
+  border-image-repeat: stretch;
+  box-shadow: 0 0 10px black;
+}
+
+@mixin button {
+    background-color: rgb(63, 63, 63);
+    font-weight: bold;
+    padding: 1%;
+    border-radius: 10px;
+    text-decoration: none;
+    color: whitesmoke;
+    transition: all 0.3s;
+
+    &:hover {
+        color: $textoPrincipal;
+        scale: 105%;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.459);
+    }
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #000;
+  background-image: url(../img/fondo.jpg);
+  background-position: center;
+  background-size: cover;
+  backdrop-filter: blur(4px) grayscale(100%);
+}
+
+#airSection {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  mix-blend-mode: darken;
+  z-index: -1;
+  opacity: 50%;
+
+  div {
+    position: fixed;
+    width: 100%;
+    height: 100px;
+    background: url(https://1.bp.blogspot.com/-xQUc-TovqDk/XdxogmMqIRI/AAAAAAAACvI/AizpnE509UMGBcTiLJ58BC6iViPYGYQfQCLcBGAsYHQ/s1600/wave.png);
+    background-size: 1000px 100px;
+
+    &:is(.air1) {
+      animation: wave 30s linear infinite;
+      z-index: -1;
+      opacity: 1;
+      animation-delay: 0s;
+      bottom: 0;
+    }
+
+    &:is(.air2) {
+      position: fixed;
+      animation: wave2 15s linear infinite;
+      z-index: -2;
+      opacity: 0.5;
+      animation-delay: -5s;
+      bottom: 10px;
+    }
+
+    &:is(.air3) {
+      position: fixed;
+      animation: wave 30s linear infinite;
+      z-index: -3;
+      opacity: 0.2;
+      animation-delay: -2s;
+      bottom: 15px;
+    }
+
+    &:is(.air4) {
+      position: fixed;
+      animation: wave2 5s linear infinite;
+      z-index: -4;
+      opacity: 0.7;
+      animation-delay: -5s;
+      bottom: 20px;
+    }
+  }
+}
+
+header {
+  @include seccionImportante();
+  h1 {
+    @include titulos();
+  }
+
+  #menuButton {
+
+    &:hover {
+        color: $textoPrincipal !important;
+    }
+  }
+
+  a {
+    @include button();
+  }
+}
+
+@keyframes wave {
+  0% {
+    background-position-x: 0px;
+  }
+  100% {
+    background-position-x: 1000px;
+  }
+}
+
+@keyframes wave2 {
+  0% {
+    background-position-x: 0px;
+  }
+  100% {
+    background-position-x: -1000px;
+  }
+}

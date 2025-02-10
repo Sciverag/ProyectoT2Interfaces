@@ -1,0 +1,111 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #000;
+  background-image: url(../img/fondo.jpg);
+  background-position: center;
+  background-size: cover;
+  -webkit-backdrop-filter: blur(4px) grayscale(100%);
+          backdrop-filter: blur(4px) grayscale(100%);
+}
+
+#airSection {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  mix-blend-mode: darken;
+  z-index: -1;
+  opacity: 50%;
+}
+#airSection div {
+  position: fixed;
+  width: 100%;
+  height: 100px;
+  background: url(https://1.bp.blogspot.com/-xQUc-TovqDk/XdxogmMqIRI/AAAAAAAACvI/AizpnE509UMGBcTiLJ58BC6iViPYGYQfQCLcBGAsYHQ/s1600/wave.png);
+  background-size: 1000px 100px;
+}
+#airSection div:is(.air1) {
+  animation: wave 30s linear infinite;
+  z-index: -1;
+  opacity: 1;
+  animation-delay: 0s;
+  bottom: 0;
+}
+#airSection div:is(.air2) {
+  position: fixed;
+  animation: wave2 15s linear infinite;
+  z-index: -2;
+  opacity: 0.5;
+  animation-delay: -5s;
+  bottom: 10px;
+}
+#airSection div:is(.air3) {
+  position: fixed;
+  animation: wave 30s linear infinite;
+  z-index: -3;
+  opacity: 0.2;
+  animation-delay: -2s;
+  bottom: 15px;
+}
+#airSection div:is(.air4) {
+  position: fixed;
+  animation: wave2 5s linear infinite;
+  z-index: -4;
+  opacity: 0.7;
+  animation-delay: -5s;
+  bottom: 20px;
+}
+
+header {
+  -o-border-image: url(../img/borde.png) 40%;
+     border-image: url(../img/borde.png) 40%;
+  border-image-width: 0 0 30% 0;
+  border-image-repeat: stretch;
+  box-shadow: 0 0 10px black;
+}
+header h1 {
+  color: goldenrod;
+  font-family: "Kaushan Script", Arial, Helvetica, sans-serif;
+  font-weight: bold;
+}
+header #menuButton:hover {
+  color: goldenrod !important;
+}
+header a {
+  background-color: rgb(63, 63, 63);
+  font-weight: bold;
+  padding: 1%;
+  border-radius: 10px;
+  text-decoration: none;
+  color: whitesmoke;
+  transition: all 0.3s;
+}
+header a:hover {
+  color: goldenrod;
+  scale: 105%;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.459);
+}
+
+@keyframes wave {
+  0% {
+    background-position-x: 0px;
+  }
+  100% {
+    background-position-x: 1000px;
+  }
+}
+@keyframes wave2 {
+  0% {
+    background-position-x: 0px;
+  }
+  100% {
+    background-position-x: -1000px;
+  }
+}/*# sourceMappingURL=style.css.map */
