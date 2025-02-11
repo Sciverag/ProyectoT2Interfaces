@@ -6,74 +6,29 @@
 body {
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
   min-height: 100vh;
-  background: #000;
   background-image: url(../img/fondo.jpg);
   background-position: center;
-  background-size: cover;
-  -webkit-backdrop-filter: blur(4px) grayscale(100%);
-          backdrop-filter: blur(4px) grayscale(100%);
-}
-
-#airSection {
-  position: fixed;
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
-  mix-blend-mode: darken;
-  z-index: -1;
-  opacity: 50%;
-}
-#airSection div {
-  position: fixed;
-  width: 100%;
-  height: 100px;
-  background: url(https://1.bp.blogspot.com/-xQUc-TovqDk/XdxogmMqIRI/AAAAAAAACvI/AizpnE509UMGBcTiLJ58BC6iViPYGYQfQCLcBGAsYHQ/s1600/wave.png);
-  background-size: 1000px 100px;
-}
-#airSection div:is(.air1) {
-  animation: wave 30s linear infinite;
-  z-index: -1;
-  opacity: 1;
-  animation-delay: 0s;
-  bottom: 0;
-}
-#airSection div:is(.air2) {
-  position: fixed;
-  animation: wave2 15s linear infinite;
-  z-index: -2;
-  opacity: 0.5;
-  animation-delay: -5s;
-  bottom: 10px;
-}
-#airSection div:is(.air3) {
-  position: fixed;
-  animation: wave 30s linear infinite;
-  z-index: -3;
-  opacity: 0.2;
-  animation-delay: -2s;
-  bottom: 15px;
-}
-#airSection div:is(.air4) {
-  position: fixed;
-  animation: wave2 5s linear infinite;
-  z-index: -4;
-  opacity: 0.7;
-  animation-delay: -5s;
-  bottom: 20px;
+  background-size: contain;
 }
 
 header {
   -o-border-image: url(../img/borde.png) 40%;
      border-image: url(../img/borde.png) 40%;
-  border-image-width: 0 0 30% 0;
+  border-image-width: 30%;
   border-image-repeat: stretch;
   box-shadow: 0 0 10px black;
+  border-image-width: 0 0 30% 0;
 }
 header h1 {
   color: goldenrod;
   font-family: "Kaushan Script", Arial, Helvetica, sans-serif;
   font-weight: bold;
+  text-shadow: 1px 1px 0 black, 1px -1px 0 black, -1px 1px 0 black, -1px -1px 0 black;
+}
+header #menuButton {
+  transition: all 0.3s;
 }
 header #menuButton:hover {
   color: goldenrod !important;
@@ -85,7 +40,7 @@ header a {
   border-radius: 10px;
   text-decoration: none;
   color: whitesmoke;
-  transition: all 0.3s;
+  transition: all 0.2s;
 }
 header a:hover {
   color: goldenrod;
@@ -93,19 +48,288 @@ header a:hover {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.459);
 }
 
-@keyframes wave {
+footer {
+  -o-border-image: url(../img/borde.png) 40%;
+     border-image: url(../img/borde.png) 40%;
+  border-image-width: 30%;
+  border-image-repeat: stretch;
+  box-shadow: 0 0 10px black;
+  margin-top: auto;
+  min-height: 10vh;
+  border-image-width: 20% 0% 0% 0%;
+}
+
+#navDesplegable {
+  -o-border-image: url(../img/borde.png) 40%;
+     border-image: url(../img/borde.png) 40%;
+  border-image-width: 30%;
+  border-image-repeat: stretch;
+  box-shadow: 0 0 10px black;
+  position: fixed;
+  top: 10vh;
+  z-index: 2;
+  border-image-width: 0% 20% 10% 0%;
+  width: 30vw;
+  height: 95vh;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  animation: menuSpawn 0.3s ease;
+}
+#navDesplegable[reverse] {
+  animation: menuSpawn 0.3s ease reverse;
+}
+#navDesplegable h1 {
+  color: goldenrod;
+  font-family: "Kaushan Script", Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  text-shadow: 1px 1px 0 black, 1px -1px 0 black, -1px 1px 0 black, -1px -1px 0 black;
+}
+#navDesplegable hr {
+  color: gray;
+}
+#navDesplegable ul {
+  margin-right: 1%;
+  list-style: none;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+#navDesplegable ul li {
+  text-align: center;
+}
+#navDesplegable ul li a {
+  color: whitesmoke;
+  font-size: larger;
+  font-weight: bold;
+  text-decoration: none;
+  width: 100%;
+  transition: all 0.2s;
+}
+#navDesplegable ul li a:hover {
+  color: goldenrod;
+  text-decoration: underline;
+}
+
+#mainInicio {
+  margin-bottom: 5%;
+}
+#mainInicio > section:nth-child(1) {
+  height: 65vh;
+  animation: cambioFondo infinite ease 13s;
+  -o-border-image: url(../img/borde.png) 40%;
+     border-image: url(../img/borde.png) 40%;
+  border-image-width: 30%;
+  border-image-repeat: stretch;
+  box-shadow: 0 0 10px black;
+  border-image-width: 5%;
+  background-image: url(../img/presentacion/presentacion1.jpg);
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@keyframes cambioFondo {
   0% {
-    background-position-x: 0px;
+    background-image: url("../img/presentacion/presentacion1.jpg");
   }
-  100% {
-    background-position-x: 1000px;
+  20% {
+    background-image: url("../img/presentacion/presentacion1.jpg");
+  }
+  30% {
+    background-image: url("../img/presentacion/presentacion2.jpg");
+  }
+  50% {
+    background-image: url("../img/presentacion/presentacion2.jpg");
+  }
+  60% {
+    background-image: url("../img/presentacion/presentacion3.jpg");
+  }
+  90% {
+    background-image: url("../img/presentacion/presentacion3.jpg");
   }
 }
-@keyframes wave2 {
+#mainInicio > section:nth-child(1) div:nth-child(1) {
+  text-align: center;
+  border: solid 3px whitesmoke;
+  padding: 3%;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.384);
+  box-shadow: 0 0 5px rgb(0, 0, 0);
+  -webkit-backdrop-filter: blur(5px) grayscale(50%);
+          backdrop-filter: blur(5px) grayscale(50%);
+}
+#mainInicio > section:nth-child(1) div:nth-child(1) h1 {
+  color: goldenrod;
+  font-family: "Playfair Display", serif;
+  font-weight: bold;
+}
+#mainInicio > section:nth-child(1) div:nth-child(1) p {
+  color: rgb(161, 161, 161);
+}
+#mainInicio > section:nth-child(1) img {
+  position: absolute;
+  width: 100vw;
+  height: 18vh;
+  top: 75vh;
+  filter: brightness(50%) contrast(110%) saturate(60%) drop-shadow(0 0 5px black);
+  -webkit-mask-image: linear-gradient(transparent 1%, black 6% 100%);
+          mask-image: linear-gradient(transparent 1%, black 6% 100%);
+  animation: leavesAnimation 3s ease-in-out infinite alternate;
+  transform-origin: top center;
+}
+#mainInicio > section:nth-child(2) {
+  margin-top: 18vh;
+  background-image: url(../img/mapa.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  text-align: center;
+}
+#mainInicio > section:nth-child(2) > h1 {
+  color: goldenrod;
+  font-family: "Kaushan Script", Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  text-shadow: 1px 1px 0 black, 1px -1px 0 black, -1px 1px 0 black, -1px -1px 0 black;
+}
+#mainInicio > section:nth-child(2) p {
+  color: gainsboro;
+}
+#mainInicio > section:nth-child(2) > div:first-of-type {
+  margin-top: 5%;
+  display: flex;
+  border: solid 3px whitesmoke;
+  border-radius: 15px;
+  box-shadow: 0 0 5px rgb(2, 2, 2);
+  height: 35vh;
+  overflow: hidden;
+}
+#mainInicio > section:nth-child(2) > div:first-of-type:has(section:hover) ~ div {
+  transform: translateY(0);
+  animation: signSpawn 1s ease-in-out;
+  opacity: 1;
+}
+#mainInicio > section:nth-child(2) > div:first-of-type section {
+  flex: 1;
+  transition: all 0.4s;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  overflow: hidden;
+  flex-direction: column;
+  z-index: 1;
+  align-items: center;
+  justify-content: center;
+  filter: blur(1px) brightness(50%);
+}
+#mainInicio > section:nth-child(2) > div:first-of-type section h1 {
+  color: goldenrod;
+  font-family: "Kaushan Script", Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  text-shadow: 1px 1px 0 black, 1px -1px 0 black, -1px 1px 0 black, -1px -1px 0 black;
+  transition: all 0.5s;
+  transform: translateY(-400%);
+  margin-top: auto;
+}
+#mainInicio > section:nth-child(2) > div:first-of-type section a {
+  background-color: rgb(63, 63, 63);
+  font-weight: bold;
+  padding: 1%;
+  border-radius: 10px;
+  text-decoration: none;
+  color: whitesmoke;
+  transition: all 0.2s;
+  transition: all 0.2s;
+  margin-top: auto;
+  background-color: rgba(24, 24, 24, 0.842);
+  -webkit-backdrop-filter: blur(4px);
+          backdrop-filter: blur(4px);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.493);
+  width: 100%;
+  border-radius: 0;
+  transform: translateY(100%);
+}
+#mainInicio > section:nth-child(2) > div:first-of-type section a:hover {
+  color: goldenrod;
+  scale: 105%;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.459);
+}
+#mainInicio > section:nth-child(2) > div:first-of-type section:hover {
+  flex-grow: 2;
+  filter: blur(0) brightness(90%);
+}
+#mainInicio > section:nth-child(2) > div:first-of-type section:hover h1 {
+  transform: translateY(0);
+}
+#mainInicio > section:nth-child(2) > div:first-of-type section:hover a {
+  transform: translateY(0);
+}
+#mainInicio > section:nth-child(2) > div:first-of-type section:nth-child(1) {
+  background-image: url(https://vidriosorribes.com/wp-content/uploads/beginValencia001.jpg);
+}
+#mainInicio > section:nth-child(2) > div:first-of-type section:nth-child(2) {
+  background-image: url(https://a.storyblok.com/f/116532/1920x1080/1a9aaf8634/henry-deane-sydney.webp);
+}
+#mainInicio > section:nth-child(2) > div:first-of-type section:nth-child(3) {
+  background-image: url(https://i.blogs.es/ed6bca/restaurantes-mejores-vistas-londres/1366_2000.jpg);
+}
+#mainInicio > section:nth-child(2) > div:last-of-type {
+  -o-border-image: url(../img/borde.png) 40%;
+     border-image: url(../img/borde.png) 40%;
+  border-image-width: 30%;
+  border-image-repeat: stretch;
+  box-shadow: 0 0 10px black;
+  transition: all 0.8s ease;
+  position: relative;
+  margin-top: 3%;
+  opacity: 0;
+  border-image-width: 10% 5%;
+  height: 20vh;
+  z-index: 0;
+  transform: translateY(-130%);
+}
+
+.cuerda {
+  position: absolute;
+  height: 10vh;
+  border: solid 4px grey;
+  border-bottom: none;
+  width: 85%;
+  left: 8%;
+  right: 8%;
+  bottom: 98%;
+  z-index: -1;
+}
+
+@keyframes menuSpawn {
   0% {
-    background-position-x: 0px;
+    transform: translateX(-100%);
   }
   100% {
-    background-position-x: -1000px;
+    transform: translateX(0%);
+  }
+}
+@keyframes leavesAnimation {
+  0% {
+    transform: skew(0deg);
+  }
+  100% {
+    transform: skew(4deg);
+  }
+}
+@keyframes signSpawn {
+  0% {
+    rotate: 0deg;
+  }
+  33% {
+    rotate: -3deg;
+  }
+  77% {
+    rotate: 3deg;
+  }
+  100% {
+    rotate: 0deg;
   }
 }/*# sourceMappingURL=style.css.map */

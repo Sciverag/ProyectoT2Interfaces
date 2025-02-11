@@ -9,11 +9,21 @@ $textoPrincipal: goldenrod;
   color: $textoPrincipal;
   font-family: "Kaushan Script", Arial, Helvetica, sans-serif;
   font-weight: bold;
+  text-shadow: 1px 1px 0 black,
+  1px -1px 0 black,
+  -1px 1px 0 black,
+  -1px -1px 0 black;
+}
+
+@mixin titulosSecundarios {
+  color: $textoPrincipal;
+  font-family: "Playfair Display", serif;
+  font-weight: bold;
 }
 
 @mixin seccionImportante {
   border-image: url(../img/borde.png) 40%;
-  border-image-width: 0 0 30% 0;
+  border-image-width: 30%;
   border-image-repeat: stretch;
   box-shadow: 0 0 10px black;
 }
@@ -25,7 +35,7 @@ $textoPrincipal: goldenrod;
     border-radius: 10px;
     text-decoration: none;
     color: whitesmoke;
-    transition: all 0.3s;
+    transition: all 0.2s;
 
     &:hover {
         color: $textoPrincipal;
@@ -34,78 +44,71 @@ $textoPrincipal: goldenrod;
     }
 }
 
-body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  background: #000;
-  background-image: url(../img/fondo.jpg);
-  background-position: center;
-  background-size: cover;
-  backdrop-filter: blur(4px) grayscale(100%);
-}
+@mixin transicionarFondo($nombre) {
 
-#airSection {
-  position: fixed;
-  width: 100%;
-  height: 100vh;
-  overflow: hidden;
-  mix-blend-mode: darken;
-  z-index: -1;
-  opacity: 50%;
+  animation: cambioFondo infinite ease 13s;
 
-  div {
-    position: fixed;
-    width: 100%;
-    height: 100px;
-    background: url(https://1.bp.blogspot.com/-xQUc-TovqDk/XdxogmMqIRI/AAAAAAAACvI/AizpnE509UMGBcTiLJ58BC6iViPYGYQfQCLcBGAsYHQ/s1600/wave.png);
-    background-size: 1000px 100px;
-
-    &:is(.air1) {
-      animation: wave 30s linear infinite;
-      z-index: -1;
-      opacity: 1;
-      animation-delay: 0s;
-      bottom: 0;
+  @keyframes cambioFondo {
+    0% {
+      background-image: url('../img/'+ $nombre +'/' + $nombre + '1.jpg');
     }
 
-    &:is(.air2) {
-      position: fixed;
-      animation: wave2 15s linear infinite;
-      z-index: -2;
-      opacity: 0.5;
-      animation-delay: -5s;
-      bottom: 10px;
+    20% {
+      background-image: url('../img/'+ $nombre +'/' + $nombre + '1.jpg');
     }
 
-    &:is(.air3) {
-      position: fixed;
-      animation: wave 30s linear infinite;
-      z-index: -3;
-      opacity: 0.2;
-      animation-delay: -2s;
-      bottom: 15px;
+    30% {
+      background-image: url('../img/'+ $nombre +'/' + $nombre + '2.jpg');
     }
 
-    &:is(.air4) {
-      position: fixed;
-      animation: wave2 5s linear infinite;
-      z-index: -4;
-      opacity: 0.7;
-      animation-delay: -5s;
-      bottom: 20px;
+    50% {
+      background-image: url('../img/'+ $nombre +'/' + $nombre + '2.jpg');
+    }
+
+    60% {
+      background-image: url('../img/'+ $nombre +'/' + $nombre + '3.jpg');
+    }
+
+    90% {
+      background-image: url('../img/'+ $nombre +'/' + $nombre + '3.jpg');
     }
   }
 }
 
+@mixin link {
+  color: whitesmoke;
+  font-size: larger;
+  font-weight: bold;
+  text-decoration: none;
+  width: 100%;
+  transition: all 0.2s;
+
+  &:hover {
+    color: $textoPrincipal;
+    text-decoration: underline;
+  }
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  min-height: 100vh;
+  background-image: url(../img/fondo.jpg);
+  background-position: center;
+  background-size: contain;
+ 
+}
+
 header {
   @include seccionImportante();
+  border-image-width: 0 0 30% 0;
   h1 {
     @include titulos();
   }
 
   #menuButton {
-
+    transition: all 0.3s;
     &:hover {
         color: $textoPrincipal !important;
     }
@@ -116,20 +119,249 @@ header {
   }
 }
 
-@keyframes wave {
-  0% {
-    background-position-x: 0px;
+footer {
+  @include seccionImportante();
+  margin-top: auto;
+  min-height: 10vh;
+  border-image-width: 20% 0% 0% 0%;
+}
+
+#navDesplegable {
+  @include seccionImportante();
+  position: fixed;
+  top: 10vh;
+  z-index: 2;
+  border-image-width: 0% 20% 10% 0%;
+  width: 30vw;
+  height: 95vh;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  animation: menuSpawn 0.3s ease;
+
+  &[reverse]{
+    animation: menuSpawn 0.3s ease reverse;
   }
-  100% {
-    background-position-x: 1000px;
+
+  h1 {
+    @include titulos();
+  }
+
+  hr {
+    color: gray;
+  }
+
+  ul {
+    margin-right: 1%;
+    list-style: none;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    li {
+      text-align: center;
+        a {
+          @include link();
+        }
+    }
   }
 }
 
-@keyframes wave2 {
-  0% {
-    background-position-x: 0px;
+#mainInicio {
+  margin-bottom: 5%;
+   > section:nth-child(1) {
+    height: 65vh;
+    @include transicionarFondo("presentacion");
+    @include seccionImportante();
+    border-image-width: 5%;
+    background-image: url(../img/presentacion/presentacion1.jpg);
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    div:nth-child(1) {
+      text-align: center;
+      border: solid 3px whitesmoke;
+      padding: 3%;
+      border-radius: 10px;
+      background-color: rgba(0, 0, 0, 0.384);
+      box-shadow: 0 0 5px rgb(0, 0, 0);
+      backdrop-filter: blur(5px) grayscale(50%);
+
+      h1 {
+        @include titulosSecundarios();
+      }
+
+      p {
+        color: rgb(161, 161, 161);
+      }
+    }
+
+    img {
+      position: absolute;
+      width: 100vw;
+      height: 18vh;
+      top: 75vh;
+      filter: brightness(50%) contrast(110%) saturate(60%) drop-shadow(0 0 5px black);
+      mask-image: linear-gradient(transparent 1%, black 6% 100%);
+      animation: leavesAnimation 3s ease-in-out infinite alternate;
+      transform-origin: top center;
+    }
   }
+
+  > section:nth-child(2) {
+    margin-top: 18vh;
+    background-image: url(../img/mapa.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    text-align: center;
+
+    > h1 {
+      @include titulos();
+    }
+
+    p {
+      color: gainsboro;
+    }
+
+    > div:first-of-type {
+      margin-top: 5%;
+      display: flex;
+      border: solid 3px whitesmoke;
+      border-radius: 15px;
+      box-shadow: 0 0 5px rgb(2, 2, 2);
+      height: 35vh;
+      overflow: hidden;
+
+      &:has(section:hover) ~ div {
+        transform: translateY(0);
+        animation: signSpawn 1s ease-in-out;
+        opacity: 1;
+      }
+
+      section {
+        flex: 1;
+        transition: all 0.4s;
+        background-position: center;
+        background-size: cover;
+        display: flex;
+        overflow: hidden;
+        flex-direction: column;
+        z-index: 1;
+        align-items: center;
+        justify-content: center;
+        filter: blur(1px) brightness(50%);
+
+        h1 {
+          @include titulos();
+          transition: all 0.5s;
+          transform: translateY(-400%);
+          margin-top: auto;
+        }
+
+        a {
+          @include button();
+          transition: all 0.2s;
+          margin-top: auto;
+          background-color: rgba(24, 24, 24, 0.842);
+          backdrop-filter: blur(4px);
+          box-shadow: 0 0 5px rgba(0, 0, 0, 0.493);
+          width: 100%;
+          border-radius: 0;
+          transform: translateY(100%);
+        }
+
+        &:hover {
+          flex-grow: 2;
+          filter: blur(0) brightness(90%);
+
+          h1 {
+            transform: translateY(0);
+          }
+
+          a {
+            transform: translateY(0);
+          }
+        }
+
+        &:nth-child(1) {
+          background-image: url(https://vidriosorribes.com/wp-content/uploads/beginValencia001.jpg);
+        }
+
+        &:nth-child(2) {
+          background-image: url(https://a.storyblok.com/f/116532/1920x1080/1a9aaf8634/henry-deane-sydney.webp);
+        }
+
+        &:nth-child(3) {
+          background-image: url(https://i.blogs.es/ed6bca/restaurantes-mejores-vistas-londres/1366_2000.jpg);
+        }
+      }
+    }
+
+    > div:last-of-type {
+      @include seccionImportante();
+      transition: all 0.8s ease;
+      position: relative;
+      margin-top: 3%;
+      opacity: 0;
+      border-image-width: 10% 5%;
+      height: 20vh;
+      z-index: 0;
+      transform: translateY(-130%);
+    }
+  }
+}
+
+.cuerda {
+  position: absolute;
+  height: 10vh;
+  border: solid 4px grey;
+  border-bottom: none;
+  width: 85%;
+  left: 8%;
+  right: 8%;
+  bottom: 98%;
+  z-index: -1;
+}
+
+@keyframes menuSpawn {
+  0% {
+    transform: translateX(-100%);
+  }
+
   100% {
-    background-position-x: -1000px;
+    transform: translateX(0%);
+  }
+}
+
+@keyframes leavesAnimation {
+  0% {
+    transform: skew(0deg);
+  }
+
+  100% {
+    transform: skew(4deg);
+  }
+}
+
+@keyframes signSpawn {
+  0% {
+    rotate: 0deg;
+  }
+
+  33% {
+    rotate: -3deg;
+  }
+
+  77% {
+    rotate: 3deg;
+  }
+
+  100% {
+    rotate: 0deg;
   }
 }
