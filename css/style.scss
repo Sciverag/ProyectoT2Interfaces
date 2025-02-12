@@ -28,6 +28,10 @@ $textoPrincipal: goldenrod;
   box-shadow: 0 0 10px black;
 }
 
+@mixin fondoCambiante($nombre, $id){
+  background-image: url('../img/' + $nombre + '/' + $nombre + $id + '.jpg');
+}
+
 @mixin button {
     background-color: rgb(63, 63, 63);
     font-weight: bold;
@@ -105,6 +109,13 @@ header {
   border-image-width: 0 0 30% 0;
   h1 {
     @include titulos();
+    cursor: pointer;
+    transition: all 1s;
+
+    &:hover {
+      color: darken($textoPrincipal, $amount: 10);
+      rotate: 360deg;
+    }
   }
 
   #menuButton {
@@ -425,6 +436,75 @@ footer {
    }
 }
 
+.bannerValencia {
+  height: 60vh;
+  width: 100%;
+  animation: cambioFondoValencia infinite ease 13s;
+  background-image: url(../img/valencia/valencia1.jpg);
+  background-position: center;
+  background-size: cover;
+  mask-origin: fill-box;
+  mask-image: linear-gradient(black 60%, transparent 90% 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  > div {
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.582);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.616);
+    padding: 3%;
+    border: solid 3px whitesmoke;
+    border-radius: 10px;
+    width: 50%;
+    backdrop-filter: blur(3px);
+
+    h1 {
+      @include titulos();
+    }
+
+    div {
+      display: flex;
+      justify-content: space-around;
+    }
+
+    a {
+      @include link();
+    }
+  }
+}
+
+#mainValencia {
+  display: grid;
+  margin-top: 5%;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+
+  @for $i from 1 through 3 {
+    section:nth-child(#{$i}){
+        @include fondoCambiante('valencia', $i);
+        grid-row: #{$i};
+         @if($i % 2 == 0){
+          grid-column: 2 / 5;
+          text-align: end;
+         }@else{
+          grid-column: 1 / 4;
+         }
+    }
+  }
+
+  section {
+    margin-bottom: 5%;
+    background-size: cover;
+    background-position: center left;
+    padding: 2%;
+
+    h1 {
+      @include titulosSecundarios();
+    }
+  }
+}
+
 @keyframes menuSpawn {
   0% {
     transform: translateX(-100%);
@@ -460,5 +540,31 @@ footer {
 
   100% {
     rotate: 0deg;
+  }
+}
+
+@keyframes cambioFondoValencia {
+  0% {
+    background-image: url('../img/valencia/valencia1.jpg');
+  }
+
+  20% {
+    background-image: url('../img/valencia/valencia1.jpg');
+  }
+
+  30% {
+    background-image: url('../img/valencia/valencia2.jpg');
+  }
+
+  50% {
+    background-image: url('../img/valencia/valencia2.jpg');
+  }
+
+  60% {
+    background-image: url('../img/valencia/valencia3.jpg');
+  }
+
+  90% {
+    background-image: url('../img/valencia/valencia3.jpg');
   }
 }
