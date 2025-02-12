@@ -124,6 +124,26 @@ footer {
   margin-top: auto;
   min-height: 10vh;
   border-image-width: 20% 0% 0% 0%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2%;
+
+  div {
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+
+    a {
+      @include link();
+      text-align: center;
+  
+      svg {
+        width: 1.2em;
+        height: 1.2em;
+      }
+    }
+  }
 }
 
 #navDesplegable {
@@ -309,9 +329,18 @@ footer {
       margin-top: 3%;
       opacity: 0;
       border-image-width: 10% 5%;
-      height: 20vh;
+      min-height: 20vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       z-index: 0;
       transform: translateY(-130%);
+
+      p {
+        font-family: 'Playfair Display', serif;
+        font-weight: bold;
+        padding: 3%;
+      }
     }
   }
 }
@@ -326,6 +355,74 @@ footer {
   right: 8%;
   bottom: 98%;
   z-index: -1;
+}
+
+#mainReserva {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+   > h1 {
+      @include titulos();
+      margin-top: 5%;
+   }
+
+   section {
+    @include seccionImportante();
+    border-image-width: 10% 5%;
+    padding: 1%;
+
+    h2 {
+      @include titulosSecundarios();
+    }
+   }
+   
+   section:nth-child(2) {
+
+    div {
+      display: flex;
+      justify-content: space-around;
+      margin: 1%;
+      border: solid 3px rgba(245, 245, 245, 0.26);
+      border-radius: 10px;
+      box-shadow: 0 0 4px black;
+      overflow: hidden;
+
+      #botonValencia {
+        flex: 1;
+        height: 20vh;
+        background-image: url(https://images.theconversation.com/files/630618/original/file-20241107-15-y9by4r.jpg?ixlib=rb-4.1.0&rect=0%2C108%2C3814%2C2728&q=20&auto=format&w=320&fit=clip&dpr=2&usm=12&cs=strip);
+        background-position: center;
+        background-size: cover;
+        color: whitesmoke;
+        @include titulos();
+        border: none;
+        font-size: x-large;
+        filter: brightness(80%);
+        transition: all 0.2s;
+
+        &:is(:hover, [seleccionado]) {
+          scale: 105%;
+          filter: brightness(100%);
+        }
+      }
+
+      #botonSidney {
+        @extend #botonValencia;
+        background-image: url(https://www.civitatis.com/blog/wp-content/uploads/2018/01/vista-opera-house-sidney.jpg);
+      }
+
+      #botonLondres {
+        @extend #botonValencia;
+        background-image: url(https://www.universal-assistance.com/uablog/wp-content/uploads/2022/12/big-ben.png);
+      }
+    }
+   }
+
+   section:nth-child(3) {
+    margin-top: 5%;
+    margin-bottom: 5%;
+    display: none;
+   }
 }
 
 @keyframes menuSpawn {

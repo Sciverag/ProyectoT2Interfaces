@@ -29,54 +29,51 @@
 
         <h1>Pirueta</h1>
 
-        <a href="reservar.html">Reservar</a>
+        <a href="">Reservar</a>
     </header>
 
     <nav class=" bg-dark p-5 ps-0" id="navDesplegable">
         <h1>Menu</h1>
         <hr class="w-100">
         <ul>
-            <li><a href="">Inicio</a></li>
-            <li><a href="reservar.html">Reservar</a></li>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="">Reservar</a></li>
             <li><a href="">Londres</a></li>
             <li><a href="">Sidney</a></li>
             <li><a href="">Valencia</a></li>
         </ul>
     </nav>
 
-    <main id="mainInicio">
-        <section class=" container-fluid">
-            <div>
-                <h1>Bienvenido a la experiencia Pirueta</h1>
-                <p>Haz que tu paladar de una vuelta al mundo</p>
-            </div>
+    <main id="mainReserva">
+        <h1>Reservar Mesa</h1>
 
-            <img src="../img/hojas.png" alt="">
+        <section class="container text-center bg-dark">
+            <h2>Selecciona el restaurante</h2>
+            <div class="mb-3">
+                <button id="botonValencia">Valencia</button>
+                <button id="botonSidney">Sidney</button>
+                <button id="botonLondres">Londres</button>
+            </div>
         </section>
 
-        <section class=" container">
-            <h1>Nuestros Destinos</h1>
-            <p>Nuestros restaurantes te transportan al lugar seleccionado, acogiendote en su cultura y gastronomia</p>
+        <section id="formReserva" class="container text-center bg-dark">
+            <h2>Información de la Reserva</h2>
+            <form action="">
+                <label for="personas">Personas</label>
+                <input type="number" name="personas" id="personas" min="1" value="1">
 
-            <div>
-                <section id="valenciaSection">
-                    <h1>Valencia</h1>
-                    <a href="">Ver Mas</a>
-                </section>
-                <section id="sidneySection">
-                    <h1>Sidney</h1>
-                    <a href="">Ver Mas</a>
-                </section>
-                <section id="londresSection">
-                    <h1>Londres</h1>
-                    <a href="">Ver Mas</a>
-                </section>
-            </div>
+                <label for="zona" class="form-label">Zona</label>
+                <select name="zona" id="zona">
+                    <option selected>Terraza</option>
+                    <option value="">Interior</option>
+                </select>
 
-            <div class="bg-dark">
-                <div class="cuerda"></div>
-                <p id="infoRestaurante"></p>
-            </div>
+                <label for="hora">Hora</label>
+                <input type="time" name="hora" id="hora">
+
+                <label for="dia">Dia</label>
+                <input type="date" name="dia" id="dia">
+            </form>
         </section>
     </main>
 
@@ -127,7 +124,7 @@
         crossorigin="anonymous"></script>
 
     <script src="../js/general.js"></script>
-    <script src="../js/index.js"></script>
+    <script src="../js/reservar.js"></script>
 </body>
 
 </html>

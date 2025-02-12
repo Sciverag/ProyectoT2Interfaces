@@ -57,6 +57,32 @@ footer {
   margin-top: auto;
   min-height: 10vh;
   border-image-width: 20% 0% 0% 0%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2%;
+}
+footer div {
+  width: 50%;
+  display: flex;
+  justify-content: space-around;
+}
+footer div a {
+  color: whitesmoke;
+  font-size: larger;
+  font-weight: bold;
+  text-decoration: none;
+  width: 100%;
+  transition: all 0.2s;
+  text-align: center;
+}
+footer div a:hover {
+  color: goldenrod;
+  text-decoration: underline;
+}
+footer div a svg {
+  width: 1.2em;
+  height: 1.2em;
 }
 
 #navDesplegable {
@@ -286,9 +312,17 @@ footer {
   margin-top: 3%;
   opacity: 0;
   border-image-width: 10% 5%;
-  height: 20vh;
+  min-height: 20vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   z-index: 0;
   transform: translateY(-130%);
+}
+#mainInicio > section:nth-child(2) > div:last-of-type p {
+  font-family: "Playfair Display", serif;
+  font-weight: bold;
+  padding: 3%;
 }
 
 .cuerda {
@@ -301,6 +335,73 @@ footer {
   right: 8%;
   bottom: 98%;
   z-index: -1;
+}
+
+#mainReserva {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#mainReserva > h1 {
+  color: goldenrod;
+  font-family: "Kaushan Script", Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  text-shadow: 1px 1px 0 black, 1px -1px 0 black, -1px 1px 0 black, -1px -1px 0 black;
+  margin-top: 5%;
+}
+#mainReserva section {
+  -o-border-image: url(../img/borde.png) 40%;
+     border-image: url(../img/borde.png) 40%;
+  border-image-width: 30%;
+  border-image-repeat: stretch;
+  box-shadow: 0 0 10px black;
+  border-image-width: 10% 5%;
+  padding: 1%;
+}
+#mainReserva section h2 {
+  color: goldenrod;
+  font-family: "Playfair Display", serif;
+  font-weight: bold;
+}
+#mainReserva section:nth-child(2) div {
+  display: flex;
+  justify-content: space-around;
+  margin: 1%;
+  border: solid 3px rgba(245, 245, 245, 0.26);
+  border-radius: 10px;
+  box-shadow: 0 0 4px black;
+  overflow: hidden;
+}
+#mainReserva section:nth-child(2) div #botonValencia, #mainReserva section:nth-child(2) div #botonLondres, #mainReserva section:nth-child(2) div #botonSidney {
+  flex: 1;
+  height: 20vh;
+  background-image: url(https://images.theconversation.com/files/630618/original/file-20241107-15-y9by4r.jpg?ixlib=rb-4.1.0&rect=0%2C108%2C3814%2C2728&q=20&auto=format&w=320&fit=clip&dpr=2&usm=12&cs=strip);
+  background-position: center;
+  background-size: cover;
+  color: whitesmoke;
+  color: goldenrod;
+  font-family: "Kaushan Script", Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  text-shadow: 1px 1px 0 black, 1px -1px 0 black, -1px 1px 0 black, -1px -1px 0 black;
+  border: none;
+  font-size: x-large;
+  filter: brightness(80%);
+  transition: all 0.2s;
+}
+#mainReserva section:nth-child(2) div #botonValencia:is(:hover, [seleccionado]), #mainReserva section:nth-child(2) div #botonLondres:is(:hover, [seleccionado]), #mainReserva section:nth-child(2) div #botonSidney:is(:hover, [seleccionado]) {
+  scale: 105%;
+  filter: brightness(100%);
+}
+#mainReserva section:nth-child(2) div #botonSidney {
+  background-image: url(https://www.civitatis.com/blog/wp-content/uploads/2018/01/vista-opera-house-sidney.jpg);
+}
+#mainReserva section:nth-child(2) div #botonLondres {
+  background-image: url(https://www.universal-assistance.com/uablog/wp-content/uploads/2022/12/big-ben.png);
+}
+#mainReserva section:nth-child(3) {
+  margin-top: 5%;
+  margin-bottom: 5%;
+  display: none;
 }
 
 @keyframes menuSpawn {
