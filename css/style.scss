@@ -10,9 +10,14 @@ $textoPrincipal: goldenrod;
   font-family: "Kaushan Script", Arial, Helvetica, sans-serif;
   font-weight: bold;
   text-shadow: 1px 1px 0 black,
-  1px -1px 0 black,
-  -1px 1px 0 black,
-  -1px -1px 0 black;
+    1px -1px 0 black,
+    -1px 1px 0 black,
+    -1px -1px 0 black;
+  letter-spacing: 0.3vw;
+
+  &::first-letter {
+    font-size: 3rem;
+  }
 }
 
 @mixin titulosSecundarios {
@@ -28,24 +33,29 @@ $textoPrincipal: goldenrod;
   box-shadow: 0 0 10px black;
 }
 
-@mixin fondoCambiante($nombre, $id){
+@mixin fondoCambiante($nombre, $id) {
   background-image: url('../img/' + $nombre + '/' + $nombre + $id + '.jpg');
 }
 
-@mixin button {
-    background-color: rgb(63, 63, 63);
-    font-weight: bold;
-    padding: 1%;
-    border-radius: 10px;
-    text-decoration: none;
-    color: whitesmoke;
-    transition: all 0.2s;
+@mixin fondoEvento($nombre, $numero) {
+  background-image: url('../img/' + $nombre + '/eventos/evento' + $numero + '.png');
 
-    &:hover {
-        color: $textoPrincipal;
-        scale: 105%;
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.459);
-    }
+}
+
+@mixin button {
+  background-color: rgb(63, 63, 63);
+  font-weight: bold;
+  padding: 1%;
+  border-radius: 10px;
+  text-decoration: none;
+  color: whitesmoke;
+  transition: all 0.2s;
+
+  &:hover {
+    color: $textoPrincipal;
+    scale: 105%;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.459);
+  }
 }
 
 @mixin transicionarFondo($nombre) {
@@ -54,27 +64,27 @@ $textoPrincipal: goldenrod;
 
   @keyframes cambioFondo {
     0% {
-      background-image: url('../img/'+ $nombre +'/' + $nombre + '1.jpg');
+      background-image: url('../img/' + $nombre +'/' + $nombre + '1.jpg');
     }
 
     20% {
-      background-image: url('../img/'+ $nombre +'/' + $nombre + '1.jpg');
+      background-image: url('../img/' + $nombre +'/' + $nombre + '1.jpg');
     }
 
     30% {
-      background-image: url('../img/'+ $nombre +'/' + $nombre + '2.jpg');
+      background-image: url('../img/' + $nombre +'/' + $nombre + '2.jpg');
     }
 
     50% {
-      background-image: url('../img/'+ $nombre +'/' + $nombre + '2.jpg');
+      background-image: url('../img/' + $nombre +'/' + $nombre + '2.jpg');
     }
 
     60% {
-      background-image: url('../img/'+ $nombre +'/' + $nombre + '3.jpg');
+      background-image: url('../img/' + $nombre +'/' + $nombre + '3.jpg');
     }
 
     90% {
-      background-image: url('../img/'+ $nombre +'/' + $nombre + '3.jpg');
+      background-image: url('../img/' + $nombre +'/' + $nombre + '3.jpg');
     }
   }
 }
@@ -101,12 +111,13 @@ body {
   background-image: url(../img/fondo.jpg);
   background-position: center;
   background-size: contain;
- 
+
 }
 
 header {
   @include seccionImportante();
   border-image-width: 0 0 30% 0;
+
   h1 {
     @include titulos();
     cursor: pointer;
@@ -120,8 +131,9 @@ header {
 
   #menuButton {
     transition: all 0.3s;
+
     &:hover {
-        color: $textoPrincipal !important;
+      color: $textoPrincipal !important;
     }
   }
 
@@ -136,6 +148,7 @@ footer {
   min-height: 10vh;
   border-image-width: 20% 0% 0% 0%;
   display: flex;
+  z-index: 1;
   flex-direction: column;
   align-items: center;
   padding: 2%;
@@ -148,7 +161,7 @@ footer {
     a {
       @include link();
       text-align: center;
-  
+
       svg {
         width: 1.2em;
         height: 1.2em;
@@ -160,7 +173,7 @@ footer {
 #navDesplegable {
   @include seccionImportante();
   position: fixed;
-  top: 10vh;
+  top: 8vh;
   z-index: 2;
   border-image-width: 0% 20% 10% 0%;
   width: 30vw;
@@ -170,7 +183,7 @@ footer {
   align-items: center;
   animation: menuSpawn 0.3s ease;
 
-  &[reverse]{
+  &[reverse] {
     animation: menuSpawn 0.3s ease reverse;
   }
 
@@ -192,16 +205,18 @@ footer {
 
     li {
       text-align: center;
-        a {
-          @include link();
-        }
+
+      a {
+        @include link();
+      }
     }
   }
 }
 
 #mainInicio {
   margin-bottom: 5%;
-   > section:nth-child(1) {
+
+  >section:nth-child(1) {
     height: 65vh;
     @include transicionarFondo("presentacion");
     @include seccionImportante();
@@ -243,7 +258,7 @@ footer {
     }
   }
 
-  > section:nth-child(2) {
+  >section:nth-child(2) {
     margin-top: 18vh;
     background-image: url(../img/mapa.png);
     background-size: contain;
@@ -251,7 +266,7 @@ footer {
     background-position: center;
     text-align: center;
 
-    > h1 {
+    >h1 {
       @include titulos();
     }
 
@@ -259,7 +274,7 @@ footer {
       color: gainsboro;
     }
 
-    > div:first-of-type {
+    >div:first-of-type {
       margin-top: 5%;
       display: flex;
       border: solid 3px whitesmoke;
@@ -268,7 +283,7 @@ footer {
       height: 35vh;
       overflow: hidden;
 
-      &:has(section:hover) ~ div {
+      &:has(section:hover)~div {
         transform: translateY(0);
         animation: signSpawn 1s ease-in-out;
         opacity: 1;
@@ -333,7 +348,7 @@ footer {
       }
     }
 
-    > div:last-of-type {
+    >div:last-of-type {
       @include seccionImportante();
       transition: all 0.8s ease;
       position: relative;
@@ -372,12 +387,13 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: center;
-   > h1 {
-      @include titulos();
-      margin-top: 5%;
-   }
 
-   section {
+  >h1 {
+    @include titulos();
+    margin-top: 5%;
+  }
+
+  section {
     @include seccionImportante();
     border-image-width: 10% 5%;
     padding: 1%;
@@ -385,9 +401,9 @@ footer {
     h2 {
       @include titulosSecundarios();
     }
-   }
-   
-   section:nth-child(2) {
+  }
+
+  section:nth-child(2) {
 
     div {
       display: flex;
@@ -427,13 +443,13 @@ footer {
         background-image: url(https://www.universal-assistance.com/uablog/wp-content/uploads/2022/12/big-ben.png);
       }
     }
-   }
+  }
 
-   section:nth-child(3) {
+  section:nth-child(3) {
     margin-top: 5%;
     margin-bottom: 5%;
     display: none;
-   }
+  }
 }
 
 .bannerValencia {
@@ -449,14 +465,14 @@ footer {
   justify-content: center;
   align-items: center;
 
-  > div {
+  >div {
     text-align: center;
     background-color: rgba(0, 0, 0, 0.582);
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.616);
     padding: 3%;
     border: solid 3px whitesmoke;
     border-radius: 10px;
-    width: 50%;
+    width: 60%;
     backdrop-filter: blur(3px);
 
     h1 {
@@ -481,26 +497,176 @@ footer {
   grid-template-rows: 1fr 1fr 1fr;
 
   @for $i from 1 through 3 {
-    section:nth-child(#{$i}){
-        @include fondoCambiante('valencia', $i);
-        grid-row: #{$i};
-         @if($i % 2 == 0){
-          grid-column: 2 / 5;
-          text-align: end;
-         }@else{
-          grid-column: 1 / 4;
-         }
+    section:nth-child(#{$i}) {
+      @include fondoCambiante('valencia', $i);
+      grid-row: #{$i};
+
+      @if($i % 2==0) {
+        grid-column: 2 / 5;
+        text-align: end;
+
+        div {
+          background-image: linear-gradient(to right, rgba(0, 0, 0, 0.473), rgba(0, 0, 0, 0.76), black 70%);
+        }
+      }
+
+      @else {
+        grid-column: 1 / 4;
+      }
     }
   }
 
   section {
-    margin-bottom: 5%;
+    margin-bottom: 8%;
     background-size: cover;
     background-position: center left;
-    padding: 2%;
+    padding: 3%;
+    backdrop-filter: brightness(20%) blur(4px);
+
+    div {
+      position: absolute;
+      @include seccionImportante();
+      border-image-width: 10% 5%;
+      top: 0;
+      z-index: -1;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: linear-gradient(to right, black 0% 30%, rgba(0, 0, 0, 0.76), rgba(0, 0, 0, 0.473));
+      backdrop-filter: blur(2px);
+    }
 
     h1 {
       @include titulosSecundarios();
+    }
+
+    p {
+      color: rgb(196, 196, 196);
+      font-weight: 600;
+    }
+  }
+}
+
+#eventos {
+  border: solid 3px whitesmoke;
+  box-shadow: 0 0 5px black;
+  border-left: none;
+  border-right: none;
+  text-align: center;
+  padding: 2%;
+
+  h1 {
+    @include titulos();
+  }
+
+  > p {
+    margin-bottom: 3%;
+  }
+
+  >div {
+    div {
+      background-position: center;
+      background-size: cover;
+      height: 30vh;
+      border-radius: 20px;
+      overflow: hidden;
+      padding: 0;
+      display: flex;
+      filter: brightness(70%);
+      transition: all 0.3s;
+      flex-direction: column;
+
+      * {
+        transition: all 0.3s;
+      }
+
+      h1 {
+        margin: auto;
+        color: lighten($textoPrincipal, $amount: 10);
+        transform: translateY(-200%);
+      }
+
+      p {
+        margin-top: auto;
+        margin-bottom: 0;
+        background-color: rgba(0, 0, 0, 0.664);
+        backdrop-filter: blur(4px) grayscale(30%);
+        color: whitesmoke;
+        display: flex;
+        padding: 1%;
+        justify-content: center;
+        align-items: center;
+        min-height: 30%;
+        font-weight: 600;
+        transform: translateY(200%);
+      }
+
+      &:hover {
+        filter: brightness(100%);
+        scale: 102%;
+        * {
+          transform: translateY(0);
+        }
+      }
+    }
+    div:nth-child(1) {
+      margin-bottom: 3%;
+       @include fondoEvento("valencia", 1);
+    }
+
+    div:nth-child(2) {
+      @include fondoEvento("valencia", 2);
+    }
+  }
+}
+
+#topVentas {
+  text-align: center;
+  margin-top: 5%;
+  > h1 {
+    @include titulos();
+  }
+
+  p {
+    color: gainsboro;
+    margin-bottom: 5%;
+  }
+
+  > div {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: 3%;
+
+    div {
+      box-shadow: 0 0 5px black;
+      padding: 2%;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      border: solid 3px whitesmoke;
+      border-bottom: none;
+      border-radius: 15px 15px 0 0;
+      transform: translateY(25%);
+      transition: all 0.3s;
+
+      &:hover {
+        transform: translateY(0);
+      }
+
+      h1 {
+        @include titulosSecundarios();
+        font-size: large;
+      }
+  
+      img {
+        box-shadow: 0 0 5px black;
+        margin-top: auto;
+        object-fit: cover;
+        width: 25vw;
+        height: 25vw;
+        border-radius: 15px;
+      }
     }
   }
 }
