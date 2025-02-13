@@ -435,7 +435,7 @@ footer div a svg {
   display: none;
 }
 
-.bannerValencia {
+.bannerValencia, .bannerSidney {
   height: 60vh;
   width: 100%;
   animation: cambioFondoValencia infinite ease 13s;
@@ -450,7 +450,7 @@ footer div a svg {
   justify-content: center;
   align-items: center;
 }
-.bannerValencia > div {
+.bannerValencia > div, .bannerSidney > div {
   text-align: center;
   background-color: rgba(0, 0, 0, 0.582);
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.616);
@@ -461,21 +461,21 @@ footer div a svg {
   -webkit-backdrop-filter: blur(3px);
           backdrop-filter: blur(3px);
 }
-.bannerValencia > div h1 {
+.bannerValencia > div h1, .bannerSidney > div h1 {
   color: goldenrod;
   font-family: "Kaushan Script", Arial, Helvetica, sans-serif;
   font-weight: bold;
   text-shadow: 1px 1px 0 black, 1px -1px 0 black, -1px 1px 0 black, -1px -1px 0 black;
   letter-spacing: 0.3vw;
 }
-.bannerValencia > div h1::first-letter {
+.bannerValencia > div h1::first-letter, .bannerSidney > div h1::first-letter {
   font-size: 3rem;
 }
-.bannerValencia > div div {
+.bannerValencia > div div, .bannerSidney > div div {
   display: flex;
   justify-content: space-around;
 }
-.bannerValencia > div a {
+.bannerValencia > div a, .bannerSidney > div a {
   color: whitesmoke;
   font-size: larger;
   font-weight: bold;
@@ -483,37 +483,37 @@ footer div a svg {
   width: 100%;
   transition: all 0.2s;
 }
-.bannerValencia > div a:hover {
+.bannerValencia > div a:hover, .bannerSidney > div a:hover {
   color: goldenrod;
   text-decoration: underline;
 }
 
-#mainValencia {
+#mainValencia, #mainSidney {
   display: grid;
   margin-top: 5%;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
 }
-#mainValencia section:nth-child(1) {
+#mainValencia section:nth-child(1), #mainSidney section:nth-child(1) {
   background-image: url("../img/valencia/valencia1.jpg");
   grid-row: 1;
   grid-column: 1/4;
 }
-#mainValencia section:nth-child(2) {
+#mainValencia section:nth-child(2), #mainSidney section:nth-child(2) {
   background-image: url("../img/valencia/valencia2.jpg");
   grid-row: 2;
   grid-column: 2/5;
   text-align: end;
 }
-#mainValencia section:nth-child(2) div {
+#mainValencia section:nth-child(2) div, #mainSidney section:nth-child(2) div {
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0.473), rgba(0, 0, 0, 0.76), black 70%);
 }
-#mainValencia section:nth-child(3) {
+#mainValencia section:nth-child(3), #mainSidney section:nth-child(3) {
   background-image: url("../img/valencia/valencia3.jpg");
   grid-row: 3;
   grid-column: 1/4;
 }
-#mainValencia section {
+#mainValencia section, #mainSidney section {
   margin-bottom: 8%;
   background-size: cover;
   background-position: center left;
@@ -521,7 +521,7 @@ footer div a svg {
   -webkit-backdrop-filter: brightness(20%) blur(4px);
           backdrop-filter: brightness(20%) blur(4px);
 }
-#mainValencia section div {
+#mainValencia section div, #mainSidney section div {
   position: absolute;
   -o-border-image: url(../img/borde.png) 40%;
      border-image: url(../img/borde.png) 40%;
@@ -538,17 +538,17 @@ footer div a svg {
   -webkit-backdrop-filter: blur(2px);
           backdrop-filter: blur(2px);
 }
-#mainValencia section h1 {
+#mainValencia section h1, #mainSidney section h1 {
   color: goldenrod;
   font-family: "Playfair Display", serif;
   font-weight: bold;
 }
-#mainValencia section p {
+#mainValencia section p, #mainSidney section p {
   color: rgb(196, 196, 196);
   font-weight: 600;
 }
 
-#eventos {
+#eventos, #eventosSidney {
   border: solid 3px whitesmoke;
   box-shadow: 0 0 5px black;
   border-left: none;
@@ -556,20 +556,20 @@ footer div a svg {
   text-align: center;
   padding: 2%;
 }
-#eventos h1 {
+#eventos h1, #eventosSidney h1 {
   color: goldenrod;
   font-family: "Kaushan Script", Arial, Helvetica, sans-serif;
   font-weight: bold;
   text-shadow: 1px 1px 0 black, 1px -1px 0 black, -1px 1px 0 black, -1px -1px 0 black;
   letter-spacing: 0.3vw;
 }
-#eventos h1::first-letter {
+#eventos h1::first-letter, #eventosSidney h1::first-letter {
   font-size: 3rem;
 }
-#eventos > p {
+#eventos > p, #eventosSidney > p {
   margin-bottom: 3%;
 }
-#eventos > div div {
+#eventos > div div, #eventosSidney > div div {
   background-position: center;
   background-size: cover;
   height: 30vh;
@@ -581,15 +581,15 @@ footer div a svg {
   transition: all 0.3s;
   flex-direction: column;
 }
-#eventos > div div * {
+#eventos > div div *, #eventosSidney > div div * {
   transition: all 0.3s;
 }
-#eventos > div div h1 {
+#eventos > div div h1, #eventosSidney > div div h1 {
   margin: auto;
   color: #e4b849;
   transform: translateY(-200%);
 }
-#eventos > div div p {
+#eventos > div div p, #eventosSidney > div div p {
   margin-top: auto;
   margin-bottom: 0;
   background-color: rgba(0, 0, 0, 0.664);
@@ -604,18 +604,18 @@ footer div a svg {
   font-weight: 600;
   transform: translateY(200%);
 }
-#eventos > div div:hover {
+#eventos > div div:hover, #eventosSidney > div div:hover {
   filter: brightness(100%);
   scale: 102%;
 }
-#eventos > div div:hover * {
+#eventos > div div:hover *, #eventosSidney > div div:hover * {
   transform: translateY(0);
 }
-#eventos > div div:nth-child(1) {
+#eventos > div div:nth-child(1), #eventosSidney > div div:nth-child(1) {
   margin-bottom: 3%;
   background-image: url("../img/valencia/eventos/evento1.png");
 }
-#eventos > div div:nth-child(2) {
+#eventos > div div:nth-child(2), #eventosSidney > div div:nth-child(2) {
   background-image: url("../img/valencia/eventos/evento2.png");
 }
 
@@ -674,6 +674,29 @@ footer div a svg {
   border-radius: 15px;
 }
 
+.bannerSidney {
+  animation: cambioFondoSidney infinite ease 13s;
+  background-image: url(../img/sidney/sidney1.jpg);
+}
+
+#mainSidney section:nth-child(1) {
+  background-image: url("../img/sidney/sidney1.jpg");
+}
+#mainSidney section:nth-child(2) {
+  background-image: url("../img/sidney/sidney2.jpg");
+}
+#mainSidney section:nth-child(3) {
+  background-image: url("../img/sidney/sidney3.jpg");
+}
+
+#eventosSidney > div div:nth-child(1) {
+  margin-bottom: 3%;
+  background-image: url("../img/sidney/eventos/evento1.png");
+}
+#eventosSidney > div div:nth-child(2) {
+  background-image: url("../img/sidney/eventos/evento2.png");
+}
+
 @keyframes menuSpawn {
   0% {
     transform: translateX(-100%);
@@ -722,5 +745,25 @@ footer div a svg {
   }
   90% {
     background-image: url("../img/valencia/valencia3.jpg");
+  }
+}
+@keyframes cambioFondoSidney {
+  0% {
+    background-image: url("../img/sidney/sidney1.jpg");
+  }
+  20% {
+    background-image: url("../img/sidney/sidney1.jpg");
+  }
+  30% {
+    background-image: url("../img/sidney/sidney2.jpg");
+  }
+  50% {
+    background-image: url("../img/sidney/sidney2.jpg");
+  }
+  60% {
+    background-image: url("../img/sidney/sidney3.jpg");
+  }
+  90% {
+    background-image: url("../img/sidney/sidney3.jpg");
   }
 }/*# sourceMappingURL=style.css.map */

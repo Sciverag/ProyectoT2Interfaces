@@ -671,6 +671,37 @@ footer {
   }
 }
 
+.bannerSidney {
+  @extend .bannerValencia;
+  animation: cambioFondoSidney infinite ease 13s;
+  background-image: url(../img/sidney/sidney1.jpg);
+}
+
+#mainSidney {
+  @extend #mainValencia;
+
+  @for $i from 1 through 3 {
+    section:nth-child(#{$i}) {
+      @include fondoCambiante('sidney', $i);
+    }
+  }
+}
+
+#eventosSidney {
+  @extend #eventos;
+
+  > div {
+    div:nth-child(1) {
+      margin-bottom: 3%;
+       @include fondoEvento("sidney", 1);
+    }
+
+    div:nth-child(2) {
+      @include fondoEvento("sidney", 2);
+    }
+  }
+}
+
 @keyframes menuSpawn {
   0% {
     transform: translateX(-100%);
@@ -732,5 +763,31 @@ footer {
 
   90% {
     background-image: url('../img/valencia/valencia3.jpg');
+  }
+}
+
+@keyframes cambioFondoSidney {
+  0% {
+    background-image: url('../img/sidney/sidney1.jpg');
+  }
+
+  20% {
+    background-image: url('../img/sidney/sidney1.jpg');
+  }
+
+  30% {
+    background-image: url('../img/sidney/sidney2.jpg');
+  }
+
+  50% {
+    background-image: url('../img/sidney/sidney2.jpg');
+  }
+
+  60% {
+    background-image: url('../img/sidney/sidney3.jpg');
+  }
+
+  90% {
+    background-image: url('../img/sidney/sidney3.jpg');
   }
 }
