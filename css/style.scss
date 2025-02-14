@@ -211,7 +211,7 @@ footer {
 #mainInicio {
   margin-bottom: 5%;
 
-  > section:nth-child(1) {
+  >section:nth-child(1) {
     height: 65vh;
     @include transicionarFondo("presentacion");
     @include seccionImportante();
@@ -246,15 +246,14 @@ footer {
       width: 100vw;
       height: 18vh;
       top: 75vh;
-      filter: brightness(50%) contrast(110%) saturate(60%)
-        drop-shadow(0 0 5px black);
+      filter: brightness(50%) contrast(110%) saturate(60%) drop-shadow(0 0 5px black);
       mask-image: linear-gradient(transparent 1%, black 6% 100%);
       animation: leavesAnimation 3s ease-in-out infinite alternate;
       transform-origin: top center;
     }
   }
 
-  > section:nth-child(2) {
+  >section:nth-child(2) {
     margin-top: 18vh;
     background-image: url(../img/mapa.png);
     background-size: contain;
@@ -262,7 +261,7 @@ footer {
     background-position: center;
     text-align: center;
 
-    > h1 {
+    >h1 {
       @include titulos();
     }
 
@@ -270,7 +269,7 @@ footer {
       color: gainsboro;
     }
 
-    > div:first-of-type {
+    >div:first-of-type {
       margin-top: 5%;
       display: flex;
       border: solid 3px whitesmoke;
@@ -279,7 +278,7 @@ footer {
       height: 35vh;
       overflow: hidden;
 
-      &:has(section:hover) ~ div {
+      &:has(section:hover)~div {
         transform: translateY(0);
         animation: signSpawn 1s ease-in-out;
         opacity: 1;
@@ -344,7 +343,7 @@ footer {
       }
     }
 
-    > div:last-of-type {
+    >div:last-of-type {
       @include seccionImportante();
       transition: all 0.8s ease;
       position: relative;
@@ -384,7 +383,7 @@ footer {
   flex-direction: column;
   align-items: center;
 
-  > h1 {
+  >h1 {
     @include titulos();
     margin-top: 5%;
   }
@@ -460,7 +459,7 @@ footer {
   justify-content: center;
   align-items: center;
 
-  > div {
+  >div {
     text-align: center;
     background-color: rgba(0, 0, 0, 0.582);
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.616);
@@ -501,14 +500,14 @@ footer {
         text-align: end;
 
         div {
-          background-image: linear-gradient(
-            to right,
-            rgba(0, 0, 0, 0.473),
-            rgba(0, 0, 0, 0.76),
-            black 70%
-          );
+          background-image: linear-gradient(to right,
+              rgba(0, 0, 0, 0.473),
+              rgba(0, 0, 0, 0.76),
+              black 70%);
         }
-      } @else {
+      }
+
+      @else {
         grid-column: 1 / 4;
       }
     }
@@ -530,12 +529,10 @@ footer {
       left: 0;
       width: 100%;
       height: 100%;
-      background-image: linear-gradient(
-        to right,
-        black 0% 30%,
-        rgba(0, 0, 0, 0.76),
-        rgba(0, 0, 0, 0.473)
-      );
+      background-image: linear-gradient(to right,
+          black 0% 30%,
+          rgba(0, 0, 0, 0.76),
+          rgba(0, 0, 0, 0.473));
       backdrop-filter: blur(2px);
     }
 
@@ -562,11 +559,11 @@ footer {
     @include titulos();
   }
 
-  > p {
+  >p {
     margin-bottom: 3%;
   }
 
-  > div {
+  >div {
     div {
       background-position: center;
       background-size: cover;
@@ -607,11 +604,13 @@ footer {
       &:hover {
         filter: brightness(100%);
         scale: 102%;
+
         * {
           transform: translateY(0);
         }
       }
     }
+
     div:nth-child(1) {
       margin-bottom: 3%;
       @include fondoEvento("valencia", 1);
@@ -626,7 +625,8 @@ footer {
 #topVentas {
   text-align: center;
   margin-top: 5%;
-  > h1 {
+
+  >h1 {
     @include titulos();
   }
 
@@ -635,7 +635,7 @@ footer {
     margin-bottom: 5%;
   }
 
-  > div {
+  >div {
     display: flex;
     flex-wrap: nowrap;
     justify-content: center;
@@ -693,7 +693,7 @@ footer {
 #eventosSidney {
   @extend #eventos;
 
-  > div {
+  >div {
     div:nth-child(1) {
       margin-bottom: 3%;
       @include fondoEvento("sidney", 1);
@@ -709,13 +709,14 @@ footer {
   margin-top: 5%;
   margin-bottom: 5%;
 
-  > h1 {
+  >h1 {
     @include titulos();
   }
 
   nav {
     display: flex;
     justify-content: space-around;
+
     button {
       @include button();
       width: 100%;
@@ -735,18 +736,17 @@ footer {
     background-color: rgb(22, 22, 22);
     animation: sectionSpawn 0.6s ease;
 
-    &:not(#entrantes){
+    &:not(#entrantes) {
       display: none;
     }
 
     .card {
       overflow: hidden;
-      perspective: 900px;
-      transition: all 0.7s;
-      transform-style: preserve-3d;
+      transition: all 0.3s;
+
 
       &:hover {
-        transform: rotateY(180deg);
+        scale: 102%;
 
         .card-body-back {
           opacity: 1;
@@ -783,6 +783,11 @@ footer {
         width: 100%;
         height: 100%;
         transition: all 0.6s;
+        color: rgb(153, 153, 153);
+        font-weight: bold;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
       }
     }
   }
@@ -888,7 +893,22 @@ footer {
   }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 961px) {
+  #mainCarta {
+    section {
+
+      .card {
+        h5 {
+          font-size: small;
+          padding: 3%;
+        }
+        
+      }
+    }
+  }
+}
+
+@media (max-width: 769px) {
   #mainValencia {
     grid-template-columns: auto;
     grid-template-rows: auto;
@@ -896,6 +916,32 @@ footer {
     section {
       grid-column: 1 !important;
       text-align: center !important;
+    }
+  }
+
+  #navDesplegable {
+    width: 50vw;
+  }
+
+  #mainCarta {
+    section {
+      grid-template-columns: 1fr 1fr;
+
+      .card {
+        h5 {
+          font-size: small;
+        }
+        
+      }
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  #mainCarta {
+    section {
+      grid-template-columns: 1fr;
+      border-image-width: 5%;
     }
   }
 }
