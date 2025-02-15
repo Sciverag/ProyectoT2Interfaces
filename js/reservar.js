@@ -26,3 +26,16 @@ botonLondres.addEventListener("click", () => {
 
     formReserva.style.display = "block";
 })
+
+document.addEventListener("DOMContentLoaded", function () {
+    const days = document.querySelectorAll(".calendar .day");
+  
+    days.forEach((day) => {
+      day.addEventListener("click", function () {
+        if (!day.classList.contains("header") && day.textContent.trim() !== "") {
+          days.forEach((d) => d.classList.remove("selected"));
+          day.classList.add("selected");
+        }
+      });
+    });
+  });

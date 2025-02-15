@@ -1,4 +1,9 @@
 $textoPrincipal: goldenrod;
+$fondoBotones: (
+  "botonValencia": url('https://images.theconversation.com/files/630618/original/file-20241107-15-y9by4r.jpg?ixlib=rb-4.1.0&rect=0%2C108%2C3814%2C2728&q=20&auto=format&w=320&fit=clip&dpr=2&usm=12&cs=strip'),
+  "botonSidney": url('https://www.civitatis.com/blog/wp-content/uploads/2018/01/vista-opera-house-sidney.jpg'),
+  "botonLondres": url('https://www.universal-assistance.com/uablog/wp-content/uploads/2022/12/big-ben.png')
+);
 
 * {
   margin: 0;
@@ -408,10 +413,15 @@ footer {
       box-shadow: 0 0 4px black;
       overflow: hidden;
 
+      @each $btn, $bg in $fondoBotones {
+        ##{$btn} {
+          background-image: $bg;
+        }
+      }
+
       #botonValencia {
         flex: 1;
         height: 20vh;
-        background-image: url(https://images.theconversation.com/files/630618/original/file-20241107-15-y9by4r.jpg?ixlib=rb-4.1.0&rect=0%2C108%2C3814%2C2728&q=20&auto=format&w=320&fit=clip&dpr=2&usm=12&cs=strip);
         background-position: center;
         background-size: cover;
         color: whitesmoke;
@@ -429,12 +439,10 @@ footer {
 
       #botonSidney {
         @extend #botonValencia;
-        background-image: url(https://www.civitatis.com/blog/wp-content/uploads/2018/01/vista-opera-house-sidney.jpg);
       }
 
       #botonLondres {
         @extend #botonValencia;
-        background-image: url(https://www.universal-assistance.com/uablog/wp-content/uploads/2022/12/big-ben.png);
       }
     }
   }
@@ -442,7 +450,114 @@ footer {
   section:nth-child(3) {
     margin-top: 5%;
     margin-bottom: 5%;
+    padding: 1%;
     display: none;
+
+    h2 {
+      margin-top: 4%;
+    }
+
+    .reservation-form {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 2vh;
+
+      label {
+        font-weight: bold;
+        color: whitesmoke;
+      }
+
+      input,
+      select,
+      textarea {
+        width: 100%;
+        padding: 1%;
+        border: 3px solid whitesmoke;
+        border-radius: 10px;
+        font-size: 16px;
+
+        &:focus {
+          border-color: $textoPrincipal;
+          outline: none;
+        }
+      }
+
+      
+
+      .calendar-container {
+        text-align: center;
+
+        h3 {
+          margin-bottom: 2%;
+          @include titulosSecundarios();
+        }
+
+        .calendar {
+          display: grid;
+          padding: 2%;
+          background-color: whitesmoke;
+          border-radius: 10px;
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+          grid-template-columns: repeat(7, 1fr);
+          gap: 3px;
+          margin-top: 10px;
+
+          .day {
+            background: rgb(36, 36, 36);
+            padding: 10%;
+            border-radius: 10px;
+            font-weight: bold;
+            color: whitesmoke;
+            transition: all 0.3s;
+
+            &:not(.header, .empty, .selected):hover {
+              background: lighten($textoPrincipal, 30%);
+              color: rgb(36, 36, 36);
+              cursor: pointer;
+            }
+
+            &:is(.selected) {
+              background: $textoPrincipal;
+              color: rgb(36, 36, 36);
+            }
+          }
+
+          .header {
+            font-weight: bold;
+            color: $textoPrincipal;
+            background: none;
+            cursor: default;
+          }
+        }
+      }
+
+      .radio-group {
+        display: flex;
+        justify-content: center;
+        gap: 5%;
+
+        label {
+          display: flex;
+          align-items: center;
+          gap: 5px;
+          font-size: 14px;
+          cursor: pointer;
+        }
+
+        input {
+          width: auto;
+        }
+      }
+    }
+
+    .submit-btn {
+      @include button();
+      border: none;
+      width: 50%;
+      margin: auto;
+      margin-bottom: 6%;
+    }
   }
 }
 
@@ -902,7 +1017,7 @@ footer {
           font-size: small;
           padding: 3%;
         }
-        
+
       }
     }
   }
@@ -931,7 +1046,7 @@ footer {
         h5 {
           font-size: small;
         }
-        
+
       }
     }
   }

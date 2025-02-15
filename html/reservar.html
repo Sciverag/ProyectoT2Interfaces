@@ -58,22 +58,79 @@
 
         <section id="formReserva" class="container text-center bg-dark">
             <h2>Información de la Reserva</h2>
-            <form action="">
-                <label for="personas">Personas</label>
-                <input type="number" name="personas" id="personas" min="1" value="1">
-
-                <label for="zona" class="form-label">Zona</label>
-                <select name="zona" id="zona">
-                    <option selected>Terraza</option>
-                    <option value="">Interior</option>
+            <form class="reservation-form">
+                <label for="num-personas">Número de personas:</label>
+                <select id="num-personas" name="num-personas">
+                  <option value="1">1 Persona</option>
+                  <option value="2">2 Personas</option>
+                  <option value="3">3 Personas</option>
+                  <option value="4">4 Personas</option>
+                  <option value="5+">5 o más</option>
                 </select>
+              
+                <label>Zona:</label>
+                <select id="zona" name="zona">
+                    <option value="Interior">Interior</option>
+                    <option value="Terraza">Terraza</option>
+                  </select>
+              
+                <label for="hora">Hora:</label>
+                <input type="time" id="hora" name="hora">
+              
+                <div class="calendar-container">
+                    <h3>Selecciona un día</h3>
+                    <div class="calendar">
+             
+                      <div class="day header">Lun</div>
+                      <div class="day header">Mar</div>
+                      <div class="day header">Mié</div>
+                      <div class="day header">Jue</div>
+                      <div class="day header">Vie</div>
+                      <div class="day header">Sáb</div>
+                      <div class="day header">Dom</div>
 
-                <label for="hora">Hora</label>
-                <input type="time" name="hora" id="hora">
-
-                <label for="dia">Dia</label>
-                <input type="date" name="dia" id="dia">
-            </form>
+                      <div class="day empty"></div> 
+                      <div class="day empty"></div>
+                      <div class="day empty"></div>
+                      <div class="day">1</div>
+                      <div class="day">2</div>
+                      <div class="day">3</div>
+                      <div class="day">4</div>
+                      <div class="day">5</div>
+                      <div class="day">6</div>
+                      <div class="day">7</div>
+                      <div class="day">8</div>
+                      <div class="day">9</div>
+                      <div class="day">10</div>
+                      <div class="day">11</div>
+                      <div class="day">12</div>
+                      <div class="day">13</div>
+                      <div class="day">14</div>
+                      <div class="day">15</div>
+                      <div class="day">16</div>
+                      <div class="day">17</div>
+                      <div class="day">18</div>
+                      <div class="day">19</div>
+                      <div class="day">20</div>
+                      <div class="day">21</div>
+                      <div class="day">22</div>
+                      <div class="day">23</div>
+                      <div class="day">24</div>
+                      <div class="day">25</div>
+                      <div class="day">26</div>
+                      <div class="day">27</div>
+                      <div class="day">28</div>
+                      <div class="day">29</div>
+                      <div class="day">30</div>
+                    </div>
+                  </div>
+                  
+              
+                <label for="intolerancias">¿Tienes alguna intolerancia alimenticia?</label>
+                <textarea id="intolerancias" name="intolerancias" rows="3" placeholder="Ejemplo: Sin gluten, sin lactosa..."></textarea>
+              </form>
+              
+              <button type="submit" class="submit-btn">Reservar</button>
         </section>
     </main>
 
