@@ -5,6 +5,12 @@ $fondoBotones: (
   "botonLondres": url('https://www.universal-assistance.com/uablog/wp-content/uploads/2022/12/big-ben.png')
 );
 
+$fondoCiudades: (
+  1: url(https://vidriosorribes.com/wp-content/uploads/beginValencia001.jpg),
+  2: url(https://a.storyblok.com/f/116532/1920x1080/1a9aaf8634/henry-deane-sydney.webp),
+  3: url(https://i.blogs.es/ed6bca/restaurantes-mejores-vistas-londres/1366_2000.jpg)
+);
+
 * {
   margin: 0;
   padding: 0;
@@ -92,16 +98,34 @@ $fondoBotones: (
 
 @mixin link {
   color: whitesmoke;
+  position: relative;
   font-size: larger;
   font-weight: bold;
   text-decoration: none;
-  width: 100%;
+  width: fit-content;
   transition: all 0.2s;
 
   &:hover {
     color: $textoPrincipal;
-    text-decoration: underline;
+
+    &::after {
+      scale: 1;
+    }
   }
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    scale: 0;
+    height: 2px;
+    transform-origin: center;
+    background: $textoPrincipal;
+    transition: all 0.3s ease-in-out;
+  }
+
 }
 
 body {
@@ -236,6 +260,7 @@ footer {
       background-color: rgba(0, 0, 0, 0.384);
       box-shadow: 0 0 5px rgb(0, 0, 0);
       backdrop-filter: blur(5px) grayscale(50%);
+      animation: spawnAnimation 0.3s linear;
 
       h1 {
         @include titulosSecundarios();
@@ -250,9 +275,9 @@ footer {
       position: absolute;
       width: 100vw;
       height: 18vh;
-      top: 75vh;
+      bottom: 5vw;
       filter: brightness(50%) contrast(110%) saturate(60%) drop-shadow(0 0 5px black);
-      mask-image: linear-gradient(transparent 1%, black 6% 100%);
+      mask-image: linear-gradient(transparent 0%, black 8% 100%);
       animation: leavesAnimation 3s ease-in-out infinite alternate;
       transform-origin: top center;
     }
@@ -300,6 +325,7 @@ footer {
         z-index: 1;
         align-items: center;
         justify-content: center;
+        cursor: help;
         filter: blur(1px) brightness(50%);
 
         h1 {
@@ -334,17 +360,12 @@ footer {
           }
         }
 
-        &:nth-child(1) {
-          background-image: url(https://vidriosorribes.com/wp-content/uploads/beginValencia001.jpg);
-        }
+        @each $pos, $bg in $fondoCiudades {
+          &:nth-child(#{$pos}){
+            background-image: $bg;
+          }
+        } 
 
-        &:nth-child(2) {
-          background-image: url(https://a.storyblok.com/f/116532/1920x1080/1a9aaf8634/henry-deane-sydney.webp);
-        }
-
-        &:nth-child(3) {
-          background-image: url(https://i.blogs.es/ed6bca/restaurantes-mejores-vistas-londres/1366_2000.jpg);
-        }
       }
     }
 
@@ -397,6 +418,7 @@ footer {
     @include seccionImportante();
     border-image-width: 10% 5%;
     padding: 1%;
+    animation: spawnAnimation 0.3s linear;
 
     h2 {
       @include titulosSecundarios();
@@ -483,7 +505,7 @@ footer {
         }
       }
 
-      
+
 
       .calendar-container {
         text-align: center;
@@ -531,24 +553,6 @@ footer {
           }
         }
       }
-
-      .radio-group {
-        display: flex;
-        justify-content: center;
-        gap: 5%;
-
-        label {
-          display: flex;
-          align-items: center;
-          gap: 5px;
-          font-size: 14px;
-          cursor: pointer;
-        }
-
-        input {
-          width: auto;
-        }
-      }
     }
 
     .submit-btn {
@@ -558,6 +562,81 @@ footer {
       margin: auto;
       margin-bottom: 6%;
     }
+  }
+
+  section:nth-child(4) {
+    padding: 2%;
+    display: none;
+    margin-bottom: 5%;
+    .form-container {
+      display: flex;
+      flex-direction: column;
+
+      * {
+        margin-bottom: 2%;
+      }
+
+      h3 {
+        @include titulosSecundarios();
+        margin-top: 3%;
+      }
+
+      label {
+        font-weight: bold;
+        color: whitesmoke;
+      }
+
+      input {
+        width: 100%;
+        padding: 1%;
+        border: 3px solid whitesmoke;
+        border-radius: 10px;
+        font-size: 16px;
+        transition: all 0.3s;
+
+        &:focus {
+          border-color: $textoPrincipal;
+          outline: none;
+        }
+      }
+
+      .checkbox-container {
+        display: flex;
+        align-items: center;
+        gap: 1%;
+        font-size: small;
+
+        label {
+          color: rgb(163, 163, 163);
+        }
+
+        input {
+          width: auto;
+          cursor: pointer;
+        }
+      }
+
+      .submit-btn {
+        @include button();
+        border: none;
+        width: 50%;
+      }
+    }
+
+    .success-message {
+      display: none;
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 1%;
+      border-radius: 10px;
+      text-align: center;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 10;
+    }
+
   }
 }
 
@@ -583,6 +662,7 @@ footer {
     border-radius: 10px;
     width: 60%;
     backdrop-filter: blur(3px);
+    animation: spawnAnimation 0.3s linear;
 
     h1 {
       @include titulos();
@@ -690,6 +770,7 @@ footer {
       filter: brightness(70%);
       transition: all 0.3s;
       flex-direction: column;
+      cursor: help;
 
       * {
         transition: all 0.3s;
@@ -778,12 +859,12 @@ footer {
       }
 
       img {
-        box-shadow: 0 0 5px black;
+        box-shadow: 0 0 10px black;
         margin-top: auto;
         object-fit: cover;
         width: 25vw;
         height: 25vw;
-        border-radius: 15px;
+        clip-path: inset(5% round 5%);
       }
     }
   }
@@ -1005,6 +1086,18 @@ footer {
 
   100% {
     transform: translateX(0);
+  }
+}
+
+@keyframes spawnAnimation {
+  0% {
+    scale: 50%;
+    opacity: 0;
+  }
+
+  100% {
+    scale: 100%;
+    opacity: 1;
   }
 }
 

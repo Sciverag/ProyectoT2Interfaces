@@ -80,16 +80,32 @@ footer div {
 }
 footer div a {
   color: whitesmoke;
+  position: relative;
   font-size: larger;
   font-weight: bold;
   text-decoration: none;
-  width: 100%;
+  width: -moz-fit-content;
+  width: fit-content;
   transition: all 0.2s;
   text-align: center;
 }
 footer div a:hover {
   color: goldenrod;
-  text-decoration: underline;
+}
+footer div a:hover::after {
+  scale: 1;
+}
+footer div a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  scale: 0;
+  height: 2px;
+  transform-origin: center;
+  background: goldenrod;
+  transition: all 0.3s ease-in-out;
 }
 footer div a svg {
   width: 1.2em;
@@ -142,15 +158,31 @@ footer div a svg {
 }
 #navDesplegable ul li a {
   color: whitesmoke;
+  position: relative;
   font-size: larger;
   font-weight: bold;
   text-decoration: none;
-  width: 100%;
+  width: -moz-fit-content;
+  width: fit-content;
   transition: all 0.2s;
 }
 #navDesplegable ul li a:hover {
   color: goldenrod;
-  text-decoration: underline;
+}
+#navDesplegable ul li a:hover::after {
+  scale: 1;
+}
+#navDesplegable ul li a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  scale: 0;
+  height: 2px;
+  transform-origin: center;
+  background: goldenrod;
+  transition: all 0.3s ease-in-out;
 }
 
 #mainInicio {
@@ -201,6 +233,7 @@ footer div a svg {
   box-shadow: 0 0 5px rgb(0, 0, 0);
   -webkit-backdrop-filter: blur(5px) grayscale(50%);
           backdrop-filter: blur(5px) grayscale(50%);
+  animation: spawnAnimation 0.3s linear;
 }
 #mainInicio > section:nth-child(1) div:nth-child(1) h1 {
   color: goldenrod;
@@ -214,10 +247,10 @@ footer div a svg {
   position: absolute;
   width: 100vw;
   height: 18vh;
-  top: 75vh;
+  bottom: 5vw;
   filter: brightness(50%) contrast(110%) saturate(60%) drop-shadow(0 0 5px black);
-  -webkit-mask-image: linear-gradient(transparent 1%, black 6% 100%);
-          mask-image: linear-gradient(transparent 1%, black 6% 100%);
+  -webkit-mask-image: linear-gradient(transparent 0%, black 8% 100%);
+          mask-image: linear-gradient(transparent 0%, black 8% 100%);
   animation: leavesAnimation 3s ease-in-out infinite alternate;
   transform-origin: top center;
 }
@@ -267,6 +300,7 @@ footer div a svg {
   z-index: 1;
   align-items: center;
   justify-content: center;
+  cursor: help;
   filter: blur(1px) brightness(50%);
 }
 #mainInicio > section:nth-child(2) > div:first-of-type section h1 {
@@ -384,6 +418,7 @@ footer div a svg {
   box-shadow: 0 0 10px black;
   border-image-width: 10% 5%;
   padding: 1%;
+  animation: spawnAnimation 0.3s linear;
 }
 #mainReserva section h2 {
   color: goldenrod;
@@ -507,21 +542,6 @@ footer div a svg {
   background: none;
   cursor: default;
 }
-#mainReserva section:nth-child(3) .reservation-form .radio-group {
-  display: flex;
-  justify-content: center;
-  gap: 5%;
-}
-#mainReserva section:nth-child(3) .reservation-form .radio-group label {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 14px;
-  cursor: pointer;
-}
-#mainReserva section:nth-child(3) .reservation-form .radio-group input {
-  width: auto;
-}
 #mainReserva section:nth-child(3) .submit-btn {
   background-color: rgb(63, 63, 63);
   font-weight: bold;
@@ -539,6 +559,82 @@ footer div a svg {
   color: goldenrod;
   scale: 105%;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.459);
+}
+#mainReserva section:nth-child(4) {
+  padding: 2%;
+  display: none;
+  margin-bottom: 5%;
+}
+#mainReserva section:nth-child(4) .form-container {
+  display: flex;
+  flex-direction: column;
+}
+#mainReserva section:nth-child(4) .form-container * {
+  margin-bottom: 2%;
+}
+#mainReserva section:nth-child(4) .form-container h3 {
+  color: goldenrod;
+  font-family: "Playfair Display", serif;
+  font-weight: bold;
+  margin-top: 3%;
+}
+#mainReserva section:nth-child(4) .form-container label {
+  font-weight: bold;
+  color: whitesmoke;
+}
+#mainReserva section:nth-child(4) .form-container input {
+  width: 100%;
+  padding: 1%;
+  border: 3px solid whitesmoke;
+  border-radius: 10px;
+  font-size: 16px;
+  transition: all 0.3s;
+}
+#mainReserva section:nth-child(4) .form-container input:focus {
+  border-color: goldenrod;
+  outline: none;
+}
+#mainReserva section:nth-child(4) .form-container .checkbox-container {
+  display: flex;
+  align-items: center;
+  gap: 1%;
+  font-size: small;
+}
+#mainReserva section:nth-child(4) .form-container .checkbox-container label {
+  color: rgb(163, 163, 163);
+}
+#mainReserva section:nth-child(4) .form-container .checkbox-container input {
+  width: auto;
+  cursor: pointer;
+}
+#mainReserva section:nth-child(4) .form-container .submit-btn {
+  background-color: rgb(63, 63, 63);
+  font-weight: bold;
+  padding: 1%;
+  border-radius: 10px;
+  text-decoration: none;
+  color: whitesmoke;
+  transition: all 0.2s;
+  border: none;
+  width: 50%;
+}
+#mainReserva section:nth-child(4) .form-container .submit-btn:hover {
+  color: goldenrod;
+  scale: 105%;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.459);
+}
+#mainReserva section:nth-child(4) .success-message {
+  display: none;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 1%;
+  border-radius: 10px;
+  text-align: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
 }
 
 .bannerValencia, .bannerSidney {
@@ -566,6 +662,7 @@ footer div a svg {
   width: 60%;
   -webkit-backdrop-filter: blur(3px);
           backdrop-filter: blur(3px);
+  animation: spawnAnimation 0.3s linear;
 }
 .bannerValencia > div h1, .bannerSidney > div h1 {
   color: goldenrod;
@@ -583,15 +680,31 @@ footer div a svg {
 }
 .bannerValencia > div a, .bannerSidney > div a {
   color: whitesmoke;
+  position: relative;
   font-size: larger;
   font-weight: bold;
   text-decoration: none;
-  width: 100%;
+  width: -moz-fit-content;
+  width: fit-content;
   transition: all 0.2s;
 }
 .bannerValencia > div a:hover, .bannerSidney > div a:hover {
   color: goldenrod;
-  text-decoration: underline;
+}
+.bannerValencia > div a:hover::after, .bannerSidney > div a:hover::after {
+  scale: 1;
+}
+.bannerValencia > div a::after, .bannerSidney > div a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  scale: 0;
+  height: 2px;
+  transform-origin: center;
+  background: goldenrod;
+  transition: all 0.3s ease-in-out;
 }
 
 #mainValencia, #mainSidney {
@@ -686,6 +799,7 @@ footer div a svg {
   filter: brightness(70%);
   transition: all 0.3s;
   flex-direction: column;
+  cursor: help;
 }
 #eventos > div div *, #eventosSidney > div div * {
   transition: all 0.3s;
@@ -771,13 +885,14 @@ footer div a svg {
   font-size: large;
 }
 #topVentas > div div img {
-  box-shadow: 0 0 5px black;
+  box-shadow: 0 0 10px black;
   margin-top: auto;
   -o-object-fit: cover;
      object-fit: cover;
   width: 25vw;
   height: 25vw;
-  border-radius: 15px;
+  -webkit-clip-path: inset(5% round 5%);
+          clip-path: inset(5% round 5%);
 }
 
 .bannerSidney {
@@ -986,6 +1101,16 @@ footer div a svg {
   }
   100% {
     transform: translateX(0);
+  }
+}
+@keyframes spawnAnimation {
+  0% {
+    scale: 50%;
+    opacity: 0;
+  }
+  100% {
+    scale: 100%;
+    opacity: 1;
   }
 }
 @media (max-width: 961px) {

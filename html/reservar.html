@@ -47,7 +47,7 @@
     <main id="mainReserva">
         <h1>Reservar Mesa</h1>
 
-        <section class="container text-center bg-dark">
+        <section id="placeContainer" class="container text-center bg-dark">
             <h2>Selecciona el restaurante</h2>
             <div class="mb-3">
                 <button id="botonValencia">Valencia</button>
@@ -130,7 +130,36 @@
                 <textarea id="intolerancias" name="intolerancias" rows="3" placeholder="Ejemplo: Sin gluten, sin lactosa..."></textarea>
               </form>
               
-              <button type="submit" class="submit-btn">Reservar</button>
+              <button type="submit" id="confirmarReserva" class="submit-btn">Reservar</button>
+        </section>
+
+        <section id="userContainer" class="container text-center bg-dark">
+            <div class="form-container">
+                <h3>Completa tu Reserva</h3>
+                <form id="reservation-form">
+                  <label for="nombre">Nombre:</label>
+                  <input type="text" id="nombre" name="nombre" required>
+              
+                  <label for="apellidos">Apellidos:</label>
+                  <input type="text" id="apellidos" name="apellidos" required>
+              
+                  <label for="email">Email:</label>
+                  <input type="email" id="email" name="email" required>
+              
+                  <label for="telefono">Teléfono:</label>
+                  <input type="tel" id="telefono" name="telefono" required pattern="[0-9]{9,12}">
+              
+                  <div class="checkbox-container">
+                    <input type="checkbox" id="privacidad" required>
+                    <label for="privacidad">Acepto el tratamiento de datos y las políticas de privacidad</label>
+                  </div>
+              
+                  <button type="submit" class="submit-btn">Completar Reserva</button>
+                </form>
+              </div>
+              
+              <div id="success-message" class="success-message">✅ ¡Reserva completada con éxito!</div>
+              
         </section>
     </main>
 
