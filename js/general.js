@@ -22,3 +22,7 @@ menuButton.addEventListener("click", () => {
     }
     
 })
+
+document.querySelector("header > h1").addEventListener("click", () => {
+    window.location.href = "index.html";
+})
