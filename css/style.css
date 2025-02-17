@@ -247,7 +247,7 @@ footer div a svg {
   position: absolute;
   width: 100vw;
   height: 18vh;
-  bottom: 2.5vw;
+  bottom: 4vw;
   filter: brightness(50%) contrast(110%) saturate(60%) drop-shadow(0 0 5px black);
   -webkit-mask-image: linear-gradient(transparent 0%, black 8% 100%);
           mask-image: linear-gradient(transparent 0%, black 8% 100%);
