@@ -67,9 +67,9 @@ $fondoCiudades: (
 }
 
 @mixin transicionarFondo($nombre) {
-  animation: cambioFondo infinite ease 13s;
+  animation: cambioFondo-#{$nombre} infinite ease 13s;
 
-  @keyframes cambioFondo {
+  @keyframes cambioFondo-#{$nombre} {
     0% {
       background-image: url("../img/" + $nombre + "/" + $nombre + "1.jpg");
     }
@@ -275,7 +275,7 @@ footer {
       position: absolute;
       width: 100vw;
       height: 18vh;
-      bottom: 5vw;
+      bottom: 2.5vw;
       filter: brightness(50%) contrast(110%) saturate(60%) drop-shadow(0 0 5px black);
       mask-image: linear-gradient(transparent 0%, black 8% 100%);
       animation: leavesAnimation 3s ease-in-out infinite alternate;
@@ -643,7 +643,7 @@ footer {
 .bannerValencia {
   height: 60vh;
   width: 100%;
-  animation: cambioFondoValencia infinite ease 13s;
+  @include transicionarFondo("valencia");
   background-image: url(../img/valencia/valencia1.jpg);
   background-position: center;
   background-size: cover;
@@ -872,7 +872,7 @@ footer {
 
 .bannerSidney {
   @extend .bannerValencia;
-  animation: cambioFondoSidney infinite ease 13s;
+  @include transicionarFondo("sidney");
   background-image: url(../img/sidney/sidney1.jpg);
 }
 
@@ -1024,58 +1024,6 @@ footer {
 
   100% {
     rotate: 0deg;
-  }
-}
-
-@keyframes cambioFondoValencia {
-  0% {
-    background-image: url("../img/valencia/valencia1.jpg");
-  }
-
-  20% {
-    background-image: url("../img/valencia/valencia1.jpg");
-  }
-
-  30% {
-    background-image: url("../img/valencia/valencia2.jpg");
-  }
-
-  50% {
-    background-image: url("../img/valencia/valencia2.jpg");
-  }
-
-  60% {
-    background-image: url("../img/valencia/valencia3.jpg");
-  }
-
-  90% {
-    background-image: url("../img/valencia/valencia3.jpg");
-  }
-}
-
-@keyframes cambioFondoSidney {
-  0% {
-    background-image: url("../img/sidney/sidney1.jpg");
-  }
-
-  20% {
-    background-image: url("../img/sidney/sidney1.jpg");
-  }
-
-  30% {
-    background-image: url("../img/sidney/sidney2.jpg");
-  }
-
-  50% {
-    background-image: url("../img/sidney/sidney2.jpg");
-  }
-
-  60% {
-    background-image: url("../img/sidney/sidney3.jpg");
-  }
-
-  90% {
-    background-image: url("../img/sidney/sidney3.jpg");
   }
 }
 
